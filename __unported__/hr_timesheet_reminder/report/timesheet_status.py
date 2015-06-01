@@ -27,7 +27,7 @@ from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
 from openerp.tools.translate import _
 
 
-class timesheet_status(report_sxw.rml_parse):
+class TimesheetStatus(report_sxw.rml_parse):
     _name = 'report.timesheet.reminder.status'
 
     def __init__(self, cr, uid, name, context=None):

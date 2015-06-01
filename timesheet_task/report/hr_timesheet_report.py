@@ -23,7 +23,7 @@
 from openerp import fields, models
 
 
-class hr_timesheet_report(models.Model):
+class HrTimesheetReport(models.Model):
     _inherit = "hr.timesheet.report"
     _name = "hr.timesheet.report"
 

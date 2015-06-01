@@ -29,7 +29,7 @@ from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
 class Parser(report_sxw.rml_parse):
 
     def _get_day_of_week(self, day):
-        WEEKDAYS = {
+        weekdays = {
             0: _('Monday'),
             1: _('Tuesday'),
             2: _('Wednesday'),
@@ -39,7 +39,7 @@ class Parser(report_sxw.rml_parse):
             6: _('Sunday'),
         }
         weekday = datetime.strptime(day, DEFAULT_SERVER_DATE_FORMAT).weekday()
-        return WEEKDAYS[weekday]
+        return weekdays[weekday]
 
     def _get_month_name(self, day):
         str_month = ''

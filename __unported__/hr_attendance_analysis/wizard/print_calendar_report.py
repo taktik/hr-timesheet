@@ -28,7 +28,7 @@ import calendar
 import pytz
 
 
-class wizard_calendar_report(orm.TransientModel):
+class WizardCalendarReport(orm.TransientModel):
 
     _columns = {
         'month': fields.selection([
@@ -289,13 +289,14 @@ class wizard_calendar_report(orm.TransientModel):
                         # schedule
                         weekday_char = str(
                             unichr(centered_holiday.weekday() + 48))
-                        matched_schedule_ids = attendance_pool.matched_schedule(
-                            cr, uid,
-                            centered_holiday,
-                            weekday_char,
-                            reference_calendar.id,
-                            context=context
-                        )
+                        matched_schedule_ids = \
+                            attendance_pool.matched_schedule(
+                                cr, uid,
+                                centered_holiday,
+                                weekday_char,
+                                reference_calendar.id,
+                                context=context
+                            )
                         if len(matched_schedule_ids) > 1:
                             raise orm.except_orm(
                                 _('Error'),

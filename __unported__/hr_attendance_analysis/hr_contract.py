@@ -30,7 +30,7 @@ import datetime
 from openerp.osv import orm
 
 
-class hr_contract(orm.Model):
+class HrContract(orm.Model):
     _inherit = 'hr.contract'
 
     def copy(self, cr, uid, id, defaults, context=None):

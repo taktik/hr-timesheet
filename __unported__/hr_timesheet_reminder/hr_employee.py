@@ -24,7 +24,7 @@ from openerp.osv import fields, orm
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
 
 
-class hr_employee(orm.Model):
+class HrEmployee(orm.Model):
     _inherit = 'hr.employee'
 
     _columns = {
