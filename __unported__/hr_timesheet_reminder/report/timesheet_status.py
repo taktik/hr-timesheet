@@ -31,7 +31,7 @@ class TimesheetStatus(report_sxw.rml_parse):
     _name = 'report.timesheet.reminder.status'
 
     def __init__(self, cr, uid, name, context=None):
-        super(timesheet_status, self).__init__(cr, uid, name, context=context)
+        super(TimesheetStatus, self).__init__(cr, uid, name, context=context)
         self.data = {}
         self.end_date = None
         self.localcontext.update({
@@ -40,13 +40,13 @@ class TimesheetStatus(report_sxw.rml_parse):
             'get_title': self.get_title,
             'get_timerange_title': self.get_timerange_title,
             'get_user_list': self.get_user_list,
-            'get_timesheet_status': self.get_timesheet_status,
+            'get_TimesheetStatus': self.get_TimesheetStatus,
         })
 
     def set_context(self, objects, data, ids, report_type=None):
         self.end_date = data['form']['date']
         self.compute(objects)
-        return super(timesheet_status, self).set_context(
+        return super(TimesheetStatus, self).set_context(
             objects, data, ids, report_type)
 
     def compute(self, objects):
@@ -108,13 +108,13 @@ class TimesheetStatus(report_sxw.rml_parse):
         """ return the list of employees object ordered by name """
         return self.data[obj.id]['employees']
 
-    def get_timesheet_status(self, obj, user, cpt):
+    def get_TimesheetStatus(self, obj, user, cpt):
         """ return the status to display for a user and a period """
         return self.data[obj.id]['sheet_status'][cpt][user.id]
 
-    def _compute_timesheet_status(self, employee_id, period):
+    def _compute_TimesheetStatus(self, employee_id, period):
         """ return the timesheet status for a user and a period """
-        return self.pool['hr.employee'].compute_timesheet_status(
+        return self.pool['hr.employee'].compute_TimesheetStatus(
             self.cr, self.uid, employee_id, period, context=self.localcontext)
 
     def _compute_all_status(self, obj):
@@ -126,10 +126,10 @@ class TimesheetStatus(report_sxw.rml_parse):
             # for each employees
             for employee in self.data[obj.id]['employees']:
                 # compute the status
-                result[p_index][employee.id] = self._compute_timesheet_status(
+                result[p_index][employee.id] = self._compute_TimesheetStatus(
                     employee.id, period)
         return result
 
 report_sxw.report_sxw('report.timesheet.reminder.status', 'res.company',
-                      'hr_timesheet_reminder/report/timesheet_status.rml',
-                      parser=timesheet_status, header=False)
+                      'hr_timesheet_reminder/report/TimesheetStatus.rml',
+                      parser=TimesheetStatus, header=False)

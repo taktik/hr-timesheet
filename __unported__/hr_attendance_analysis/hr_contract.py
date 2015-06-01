@@ -53,5 +53,5 @@ class HrContract(orm.Model):
             defaults['date_end'] = False
             defaults['trial_date_start'] = False
             defaults['trial_date_end'] = False
-        return super(hr_contract, self).copy(cr, uid, id, defaults,
-                                             context=context)
+        return super(HrContract, self).copy(cr, uid, id, defaults,
+                                            context=context)

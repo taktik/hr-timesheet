@@ -30,11 +30,11 @@ class HrTimesheetReport(models.Model):
     task_id = fields.Many2one('project.task', string='Task', readonly=True)
 
     def _select(self):
-        select_str = super(hr_timesheet_report, self)._select()
+        select_str = super(HrTimesheetReport, self)._select()
         select_str += ", aal.task_id as task_id"
         return select_str
 
     def _group_by(self):
-        group_by_str = super(hr_timesheet_report, self)._group_by()
+        group_by_str = super(HrTimesheetReport, self)._group_by()
         group_by_str += ", aal.task_id"
         return group_by_str
